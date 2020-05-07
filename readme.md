@@ -1,2 +1,1 @@
-# geekbangtrain
-Python训练营
+1c
