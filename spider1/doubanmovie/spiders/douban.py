@@ -7,7 +7,7 @@ from doubanmovie.items import DoubanmovieItem
 class DoubanSpider(scrapy.Spider):
     # 定义爬虫名称
     name = 'douban'
-    allowed_domains = ['moive.douban.com']
+    allowed_domains = ['movie.douban.com']
     # 起始URL列表
     start_urls = ['https://movie.douban.com/top250']
 
