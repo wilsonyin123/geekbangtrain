@@ -16,3 +16,4 @@ class DoubanmovieItem(scrapy.Item):
     # pass
     title = scrapy.Field()
     link = scrapy.Field()
+    content = scrapy.Field()

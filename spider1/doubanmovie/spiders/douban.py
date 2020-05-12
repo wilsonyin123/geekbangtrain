@@ -29,18 +29,23 @@ class DoubanSpider(scrapy.Spider):
 
     # 解析函数
     def parse(self, response):
-        items = []
         soup = BeautifulSoup(response.text, 'html.parser')
         title_list = soup.find_all('div', attrs={'class': 'hd'})
-        for i in range(len(title_list)):
-        # 在Python中应该这样写
-	# for i in title_list:
+        for i in title_list:
             # 在items.py定义
             item = DoubanmovieItem()
-            title = title_list[i].find('a').find('span',).text
-            link = title_list[i].find('a').get('href')
+            title = i.find('a').find('span',).text
+            link = i.find('a').get('href')
             item['title'] = title
             item['link'] = link
-            items.append(item)
-        return items
+            yield scrapy.Request(url=link, meta={'item': item}, callback=self.parse2)
+
+    # 解析具体页面
+    def parse2(self, response):
+        item = response.meta['item']
+        print(item['link'])
+        soup = BeautifulSoup(response.text, 'html.parser')
+        content = soup.find('div', attrs={'class': 'indent'}).get_text().strip()
+        item['content'] = content
+        yield item
 
