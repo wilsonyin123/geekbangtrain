@@ -16,8 +16,7 @@ class DoubanmoviePipeline:
         title = item['title']
         link = item['link']
         content = item['content']
-        output = f'{title}\t{link}\t{content}\n\n'
-        print(output)
+        output = f'|{title}|\t|{link}|\t|{content}|\n\n'
         with open('./doubanmovie.txt', 'a+', encoding='utf-8') as article:
             article.write(output)
             article.close()

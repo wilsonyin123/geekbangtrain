@@ -43,9 +43,8 @@ class DoubanSpider(scrapy.Spider):
     # 解析具体页面
     def parse2(self, response):
         item = response.meta['item']
-        print(item['link'])
         soup = BeautifulSoup(response.text, 'html.parser')
-        content = soup.find('div', attrs={'class': 'indent'}).get_text().strip()
+        content = soup.find('div', attrs={'class': 'related-info'}).get_text().strip()
         item['content'] = content
         yield item
 
