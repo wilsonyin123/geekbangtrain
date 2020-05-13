@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 import scrapy
-from bs4 import BeautifulSoup
 from doubanmovie.items import DoubanmovieItem
+# from bs4 import BeautifulSoup
+from scrapy.selector import Selector
 
 
 class DoubanSpider(scrapy.Spider):
@@ -20,31 +21,38 @@ class DoubanSpider(scrapy.Spider):
     # start_requests()方法读取start_urls列表中的URL并生成Request对象，发送给引擎。
     # 引擎再指挥其他组件向网站服务器发送请求，下载网页
     def start_requests(self):
-        for i in range(0, 10):
+        # for i in range(0, 10):
+            i=0
             url = f'https://movie.douban.com/top250?start={i*25}'
-            yield scrapy.Request(url=url, callback=self.parse)
+            yield scrapy.Request(url=url, callback=self.parse, dont_filter=False)
             # url 请求访问的网址
             # callback 回调函数，引擎回将下载好的页面(Response对象)发给该方法，执行数据解析
             # 这里可以使用callback指定新的函数，不是用parse作为默认的回调参数
 
     # 解析函数
     def parse(self, response):
-        soup = BeautifulSoup(response.text, 'html.parser')
-        title_list = soup.find_all('div', attrs={'class': 'hd'})
-        for i in title_list:
-            # 在items.py定义
-            item = DoubanmovieItem()
-            title = i.find('a').find('span',).text
-            link = i.find('a').get('href')
-            item['title'] = title
-            item['link'] = link
-            yield scrapy.Request(url=link, meta={'item': item}, callback=self.parse2)
+        # 打印网页的url
+        print(response.url)
+        # 打印网页的内容
+        # print(response.text)
 
-    # 解析具体页面
-    def parse2(self, response):
-        item = response.meta['item']
-        soup = BeautifulSoup(response.text, 'html.parser')
-        content = soup.find('div', attrs={'class': 'related-info'}).get_text().strip()
-        item['content'] = content
-        yield item
-
+        # soup = BeautifulSoup(response.text, 'html.parser')
+        # title_list = soup.find_all('div', attrs={'class': 'hd'})
+        movies = Selector(response=response).xpath('//div[@class="hd"]')
+        for movie in movies:
+        #     title = i.find('a').find('span',).text
+        #     link = i.find('a').get('href')
+            # 路径使用 / .  .. 不同的含义　
+            title = movie.xpath('./a/span/text()')
+            link = movie.xpath('./a/@href')
+            print('-----------')
+            print(title)
+            print(link)
+            print('-----------')
+            print(title.extract())
+            print(link.extract())
+            print(title.extract_first())
+            print(link.extract_first())
+            print(title.extract_first().strip())
+            print(link.extract_first().strip())
+            

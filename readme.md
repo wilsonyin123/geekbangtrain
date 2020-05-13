@@ -1,3 +1,1 @@
-Scrapy爬虫增加电影简介
-
-
+XPathd代替bs4匹配网页
