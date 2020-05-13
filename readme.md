@@ -1,2 +1,2 @@
 exception 异常处理
-pyMYSQL 连接数据库
+pyMySQL 连接数据库
