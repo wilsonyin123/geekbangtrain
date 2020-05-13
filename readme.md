@@ -1,1 +1,2 @@
-XPathd代替bs4匹配网页
+exception 异常处理
+pyMYSQL 连接数据库
