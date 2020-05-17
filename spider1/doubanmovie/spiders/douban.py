@@ -34,7 +34,7 @@ class DoubanSpider(scrapy.Spider):
         title_list = soup.find_all('div', attrs={'class': 'hd'})
         for i in range(len(title_list)):
         # 在Python中应该这样写
-	# for i in title_list:
+	    # for i in title_list:
             # 在items.py定义
             item = DoubanmovieItem()
             title = title_list[i].find('a').find('span',).text
