@@ -26,7 +26,7 @@ class ConnDB(object):
         self.db = dbInfo['db']
         self.sqls = sqls
 
-        self.run()
+        # self.run()
 
     def run(self):
         conn = pymysql.connect(
@@ -52,4 +52,5 @@ class ConnDB(object):
 
 if __name__ == "__main__":
     db = ConnDB(dbInfo, sqls)
+    db.run()
     print(result)

@@ -26,3 +26,6 @@ print(con1.fetchall())
 con1.close()
 conn.close()
 
+# 执行批量插入
+# values = [(id,'testuser'+str(id)) for id in range(4, 21) ]
+# cursor.executemany('INSERT INTO '+ TABLE_NAME +' values(%s,%s)' ,values)
