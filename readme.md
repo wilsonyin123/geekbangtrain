@@ -1,3 +1,1 @@
-1、scrapy-redis
-2、redis-server redis.conf
-
+1、twisted
