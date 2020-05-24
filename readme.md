@@ -1,3 +1,3 @@
-1、 下载中间件
-
+1、scrapy-redis
+2、redis-server redis.conf
 

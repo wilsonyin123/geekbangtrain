@@ -36,8 +36,10 @@ pytesseract==0.3.4
 python-dateutil==2.8.1
 pytz==2020.1
 queuelib==1.5.0
+redis==3.5.2
 requests==2.23.0
 Scrapy==2.1.0
+scrapy-redis==0.6.8
 selenium==3.141.0
 service-identity==18.1.0
 six==1.14.0

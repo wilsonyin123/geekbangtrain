@@ -6,6 +6,14 @@
 # See: https://docs.scrapy.org/en/latest/topics/item-pipeline.html
 
 
-class ProxyspiderPipeline:
+class ScrapyclusterPipeline:
     def process_item(self, item, spider):
         return item
+
+
+#  redis 存储了item
+#  bash$  redis-cli
+#  redis> keys *
+#  redis> type cluster:items
+#  redis> lpop cluster:items
+#  redis> keys *

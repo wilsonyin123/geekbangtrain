@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Scrapy settings for proxyspider project
+# Scrapy settings for scrapycluster project
 #
 # For simplicity, this file contains only settings considered important or
 # commonly used. You can find more settings consulting the documentation:
@@ -9,15 +9,14 @@
 #     https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
 #     https://docs.scrapy.org/en/latest/topics/spider-middleware.html
 
-BOT_NAME = 'proxyspider'
+BOT_NAME = 'scrapycluster'
 
-SPIDER_MODULES = ['proxyspider.spiders']
-NEWSPIDER_MODULE = 'proxyspider.spiders'
+SPIDER_MODULES = ['scrapycluster.spiders']
+NEWSPIDER_MODULE = 'scrapycluster.spiders'
 
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
-#USER_AGENT = 'proxyspider (+http://www.yourdomain.com)'
-USER_AGENT = 'proxyspider (+http://www.yourdomain.com)'
+#USER_AGENT = 'scrapycluster (+http://www.yourdomain.com)'
 
 # Obey robots.txt rules
 ROBOTSTXT_OBEY = True
@@ -48,22 +47,14 @@ ROBOTSTXT_OBEY = True
 # Enable or disable spider middlewares
 # See https://docs.scrapy.org/en/latest/topics/spider-middleware.html
 #SPIDER_MIDDLEWARES = {
-#    'proxyspider.middlewares.ProxyspiderSpiderMiddleware': 543,
+#    'scrapycluster.middlewares.ScrapyclusterSpiderMiddleware': 543,
 #}
 
 # Enable or disable downloader middlewares
 # See https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
-DOWNLOADER_MIDDLEWARES = {
-    'proxyspider.middlewares.ProxyspiderDownloaderMiddleware': 543,
-    'scrapy.downloadermiddlewares.httpproxy.HttpProxyMiddleware': None,
-    'scrapy.downloadermiddlewares.useragent.UserAgentMiddleware': 400,
-    'proxyspider.middlewares.RandomHttpProxyMiddleware': 400,
-
-}
-HTTP_PROXY_LIST= [
-     'http://52.179.231.206:80',
-     'http://95.0.194.241:9090',
-]
+#DOWNLOADER_MIDDLEWARES = {
+#    'scrapycluster.middlewares.ScrapyclusterDownloaderMiddleware': 543,
+#}
 
 # Enable or disable extensions
 # See https://docs.scrapy.org/en/latest/topics/extensions.html
@@ -74,7 +65,7 @@ HTTP_PROXY_LIST= [
 # Configure item pipelines
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
 #ITEM_PIPELINES = {
-#    'proxyspider.pipelines.ProxyspiderPipeline': 300,
+#    'scrapycluster.pipelines.ScrapyclusterPipeline': 300,
 #}
 
 # Enable and configure the AutoThrottle extension (disabled by default)
@@ -97,3 +88,24 @@ HTTP_PROXY_LIST= [
 #HTTPCACHE_DIR = 'httpcache'
 #HTTPCACHE_IGNORE_HTTP_CODES = []
 #HTTPCACHE_STORAGE = 'scrapy.extensions.httpcache.FilesystemCacheStorage'
+
+# redis信息
+REDIS_HOST='127.0.0.1'
+REDIS_PORT=6379
+
+# Scheduler的QUEUE
+SCHEDULER = "scrapy_redis.scheduler.Scheduler"
+
+# 去重
+DUPEFILTER_CLASS = "scrapy_redis.dupefilter.RFPDupeFilter"
+
+# Requests的默认优先级队列
+SCHEDULER_QUEUE_CLASS = 'scrapy_redis.queue.PriorityQueue'
+
+# 将Requests队列持久化到Redis，可支持暂停或重启爬虫
+SCHEDULER_PERSIST = True
+
+# 将爬取到的items保存到Redis
+ITEM_PIPELINES = {
+    'scrapy_redis.pipelines.RedisPipeline': 300
+}
