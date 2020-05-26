@@ -1,3 +1,3 @@
-1、twisted
-2、进程
-3、线程
+1、pandas
+2、jieba
+3、snownlp
