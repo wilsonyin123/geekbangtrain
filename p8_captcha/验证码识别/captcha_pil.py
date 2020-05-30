@@ -1,3 +1,14 @@
+
+# 先安装依赖库libpng, jpeg, libtiff, leptonica
+# brew install leptonica
+# 安装tesseract
+# brew install  tesseract
+# 与python对接需要安装的包
+# pip3 install Pillow
+# pip3 install pytesseract
+
+
+
 import requests
 import os
 from PIL import Image
@@ -38,13 +49,5 @@ out.save('c_th.jpg')
 th = Image.open('c_th.jpg')
 print(pytesseract.image_to_string(th,lang='chi_sim+eng'))
 
-
 # 各种语言识别库 https://github.com/tesseract-ocr/tessdata
 # 放到 /usr/local/Cellar/tesseract/版本/share/tessdata
-# 先安装依赖库libpng, jpeg, libtiff, leptonica
-# brew install leptonica
-# 安装tesseract
-# brew install  tesseract
-# 与python对接需要安装的包
-# pip3 install Pillow
-# pip3 install pytesseract

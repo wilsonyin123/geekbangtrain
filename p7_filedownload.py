@@ -9,7 +9,7 @@ with open("python_logo.png",'wb') as f:
 # 如果文件比较大的话，那么下载下来的文件先放在内存中，内存还是比较有压力的。
 # 所以为了防止内存不够用的现象出现，我们要想办法把下载的文件分块写到磁盘中。
 import requests
-file_url = "http://codex.cs.yale.edu/avi/db-book/db4/slide-dir/ch1-2.pdf"
+file_url = "http://python.xxx.yyy.pdf"
 r = requests.get(file_url, stream=True)
 with open("python.pdf", "wb") as pdf:
     for chunk in r.iter_content(chunk_size=1024):

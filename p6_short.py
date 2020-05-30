@@ -15,6 +15,6 @@ try:
 
 except Exception as e:
     print(e)
-finally:    
-    browser.close()
+# finally:    
+#     browser.close()
     
