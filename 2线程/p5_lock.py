@@ -9,10 +9,9 @@ class MyThread(threading.Thread):
         global num
         time.sleep(1)
 
-        if mutex.acquire(1):    # 上锁 
+        if mutex.acquire(1):    # 加锁 
             num = num + 1
-            msg = self.name + ': num value is ' + str(num)
-            print(msg)
+            print(f'{self.name} : num value is  {num}')
         mutex.release()   #解锁
 
 if __name__ == '__main__':

@@ -1,3 +1,4 @@
+# 条件锁：该机制会使线程等待，只有满足某条件时，才释放n个线程
 import threading
  
 def condition():

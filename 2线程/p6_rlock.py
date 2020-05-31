@@ -1,6 +1,6 @@
 import threading
 import time
-
+# Lock普通锁不可嵌套，RLock普通锁可嵌套
 mutex = threading.RLock()
 
 class MyThread(threading.Thread):

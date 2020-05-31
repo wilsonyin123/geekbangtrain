@@ -1,3 +1,4 @@
+# 事件： 定义一个flag，set设置flag为True ，clear设置flag为False
 import threading
  
 def func(e,i):

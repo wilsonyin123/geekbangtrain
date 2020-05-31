@@ -1,3 +1,4 @@
+# 信号量：内部实现一个计数器，占用信号量的线程数超过指定值时阻塞
 import time
 import threading
  

@@ -7,7 +7,7 @@ q.put(333)
 print(q.get())    # 取队列
 print(q.get())
 q.task_done()     # 每次从queue中get一个数据之后，当处理好相关问题，最后调用该方法，
-                  # 以提示q.join()是否停止阻塞，让线程向前执行或者退出
+                  # 以提示q.join()是否停止阻塞，让线程继续执行或者退出
 print(q.qsize())  # 队列中元素的个数， 队列的大小
 print(q.empty())  # 队列是否为空
 print(q.full())   # 队列是否满了
@@ -61,9 +61,9 @@ class Consumer(threading.Thread):
         while 1:
             global writelock
             self.con.acquire()
-            if self.q.empty():   # 队列满
+            if self.q.empty():   # 队列空
                 with writelock:
-                    print('Queue is full , producer wait')
+                    print('Queue is empty , consumer wait')
                 self.con.wait()  # 等待资源
             else:
                 value = self.q.get()
@@ -86,4 +86,4 @@ if __name__ == '__main__':
     c1 = Consumer(q, con, 'C1')
     c1.start()
 
-# 练习使用数组实现队列
+# 练习使用列表实现队列

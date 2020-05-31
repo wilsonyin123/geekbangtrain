@@ -2,7 +2,7 @@ import threading
 
 class MyThread(threading.Thread):
     def __init__(self, n):
-        super(MyThread, self).__init__() # 重构run函数必须要写
+        super().__init__() # 重构run函数必须要写
         self.n = n
 
     def run(self):

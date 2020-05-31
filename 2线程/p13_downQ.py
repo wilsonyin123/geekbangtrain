@@ -6,7 +6,7 @@ from fake_useragent import UserAgent
 
 class DownloadThread(threading.Thread):
     def __init__(self, q):
-        super(DownloadThread,self).__init__()
+        super().__init__()
         self.q = q
     
     def run(self):
