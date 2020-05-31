@@ -4,18 +4,20 @@ from multiprocessing import Process
 import os
 import multiprocessing
 
-def info(title):
+def debug_info(title):
+    print('-'*20)
     print(title)
-    print('module name:', __name__)
-    print('parent process:', os.getppid())
-    print('process id:', os.getpid())
+    print('模块名称:', __name__)
+    print('父进程:', os.getppid())
+    print('当前进程:', os.getpid())
+    print('-'*20)
 
 def f(name):
-    info('function f')
+    debug_info('function f')
     print('hello', name)
 
 if __name__ == '__main__':
-    info('main')
+    debug_info('main')
     p = Process(target=f, args=('bob',))
     p.start()
 

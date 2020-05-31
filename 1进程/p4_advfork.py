@@ -12,7 +12,7 @@ if __name__ == "__main__":
     print("父进程启动")
     p = Process(target=run)
     p.start()
-    p.join()
+    p.join()  
     print("父进程结束")
 # # 输出结果
 # 父进程启动
