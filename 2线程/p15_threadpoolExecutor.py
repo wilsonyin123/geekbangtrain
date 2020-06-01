@@ -4,6 +4,7 @@ import time
 
 def func(args):
     print(f'call func {args}')
+    
 if __name__ == "__main__":
     seed = ['a', 'b', 'c', 'd']
 

@@ -92,12 +92,12 @@ class ParserThread(threading.Thread):
 dataQueue = Queue() # 存放解析数据的queue
 flag = False
 
-def main():
+if __name__ == '__main__':
     # 将结果保存到一个json文件中
     output = open('book.json','a',encoding='utf-8') 
 
     # 任务队列，存放网页的队列
-    pageQueue = Queue(50) 
+    pageQueue = Queue(20) 
     for page in range(0,11): 
         pageQueue.put(page) 
     
@@ -117,14 +117,11 @@ def main():
         thread.start() 
         parse_thread.append(thread)
 
-
     # 结束crawl线程
     for t in crawl_threads:
         t.join()
     
-
     # 结束parse线程
-    global flag
     flag = True
     for t in parse_thread:
         t.join() 
@@ -132,5 +129,4 @@ def main():
     output.close()
     print('退出主线程')
     
-if __name__ == '__main__':
-    main()
+
