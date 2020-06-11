@@ -34,8 +34,8 @@ s1.values.tolist()
 #    如果index完全随机，每次查询都要扫全表，查询性能为O(N)
 
 # 取出email
-emails = pd.Series(['buying books at amazom.com', 'rameses@egypt.com', 'matt@t.co', 'narendra@modi.com'])
+emails = pd.Series(['abc at amazom.com', 'admin1@163.com', 'mat@m.at', 'ab@abc.com'])
 import re
-pattern ='[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}'
+pattern ='[A-Za-z0-9._]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,5}'
 mask = emails.map(lambda x: bool(re.match(pattern, x)))
 emails[mask]

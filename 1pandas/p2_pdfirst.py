@@ -1,12 +1,15 @@
 import pandas as pd
 import numpy as np
 import matplotlib as plt
-
-df = pd.read_csv('book_utf8.csv')
+import os
+pwd = os.path.dirname(os.path.realpath(__file__))
+book = os.path.join(pwd,'book_utf8.csv')
+# df = pd.read_csv('book_utf8.csv')
+df = pd.read_csv(book)
 # 输出全部内容
 print(df)
 
-# 筛选一列 ？
+# 筛选标题为"还行"这一列
 df['还行']
 
 # 切片方式筛选
@@ -38,3 +41,5 @@ star_to_number = {
     '很差' : 1
 }
 df['new_star'] = df['star'].map(star_to_number)
+
+print(df)
