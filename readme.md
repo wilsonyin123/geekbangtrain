@@ -1,3 +1,3 @@
 1、pandas
 2、jieba
-3、snownlp
+3、snownlp NLP
