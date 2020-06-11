@@ -11,5 +11,6 @@ urlpatterns = [
     path('<int:year>', views.year),  # 只接收整数，其他类型返回404
     path('<int:year>/<str:name>', views.name),
     # path('<myint:year>', views.year), # 自定义过滤器
+    path('books', views.books),
 
 ]

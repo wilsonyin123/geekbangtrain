@@ -4,6 +4,9 @@ from django.shortcuts import redirect
 # Create your views here.
 from django.http import HttpResponse
 
+###  从models取数据传给template  ###
+from .models import Name
+
 def index(request):
     return HttpResponse("Hello Django!")
 
@@ -16,3 +19,8 @@ def year(request, year):
 
 def name(request, **kwargs):
     return HttpResponse(kwargs['name'])
+
+def books(request):
+    ###  从models取数据传给template  ###
+    n = Name.objects.all()
+    return render(request, 'bookslist.html', locals())
