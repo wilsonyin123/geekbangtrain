@@ -22,15 +22,13 @@ data3 = pd.DataFrame({
 pd.merge(data1, data2)
 
 # 多对一
-pd.merge(data3, data2, on= 'group')
+pd.merge(data3, data2, on='group')
 
 # 多对多
 pd.merge(data3, data2)
 
 # 连接键类型，解决没有公共列问题
-pd.merge(data3, data2, left_on= 'a', right_on='b')
-
-pd.merge(data3, data2, left_index= 'a', right_index='b')
+pd.merge(data3, data2, left_on= 'age', right_on='salary')
 
 # 连接方式
 # 内连接，不指明连接方式，默认都是内连接

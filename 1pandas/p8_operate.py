@@ -1,20 +1,24 @@
 import pandas as pd
-
+df = pd.DataFrame({"A":[5,3,None,4], 
+                 "B":[None,2,4,3], 
+                 "C":[4,3,8,5], 
+                 "D":[5,4,2,None]}) 
 # 算数运算
 # 两列之间的加减乘除
-df['num1'] + df['num2'] 
+df['A'] + df['C'] 
 
 # 任意一列加/减一个常数值，这一列中的所有值都加/减这个常数值
-df['num1'] + 5
+df['A'] + 5
 
 # 比较运算
-df['num1'] > df ['num2']  
+df['A'] > df ['C']  
 
 # count非空值计数
-excel1 = pd.read_excel(r'0321.xlsx')
-excel1.count()
-excel1.sum()
-df['new_star'].sum()
+df.count()
+
+# 非空值每列求和
+df.sum()
+df['A'].sum()
 
 # mean求均值
 # max求最大值
