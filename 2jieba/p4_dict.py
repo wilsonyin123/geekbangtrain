@@ -1,6 +1,6 @@
 import jieba
 string = '极客大学Python进阶训练营真好玩'
-user_dict=r'day0402/extra_dict/user_dict.txt'
+user_dict=r'2jieba/extra_dict/user_dict.txt'
 
 # 自定义词典
 jieba.load_userdict(user_dict)
