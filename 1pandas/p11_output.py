@@ -9,7 +9,7 @@ df.to_excel( excel_writer = r'file.xlsx', sheet_name = 'sheet1', index = False)
 
 # 设置要导出的列
 df.to_excel( excel_writer = r'file.xlsx', sheet_name = 'sheet1', 
-             index =False, columns = ['col1','col2'])
+             index = False, columns = ['col1','col2'])
 
 # 设置编码格式
 enconding = 'utf-8'
