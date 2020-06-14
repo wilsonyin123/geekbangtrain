@@ -9,8 +9,8 @@ def index(request):
 
 # path('<int:year>', views.year), 
 def year(request, year):
-    return HttpResponse(year)
-    # return redirect('/2020.html')
+    # return HttpResponse(year)
+    return redirect('/2020.html')
 
 # path('<int:year>/<str:name>', views.name),
 def name(request, **kwargs):
