@@ -1,0 +1,46 @@
+数据表的读写
+$ python manage.py  shell
+>>> from index.models import *
+>>> n = Name()
+>>> n.name='红楼梦'
+>>> n.author='曹雪芹'
+>>> n.stars=9.6
+>>> n.save()
+
+使用ORM框架api实现
+增
+>>> from index.models import *
+>>> Name.objects.create(name='红楼梦', author='曹雪芹', stars='9.6')
+>>> Name.objects.create(name='活着', author='余华', stars='9.4')
+
+
+查
+>>> Name.objects.get(id=2).name
+
+改
+>>> Name.objects.filter(name='红楼梦').update(name='石头记')
+
+删 
+单条数据
+>>> Name.objects.filter(name='红楼梦').delete()
+全部数据
+>>> Name.objects.all().delete()
+
+其他常用查询
+>>> Name.objects.create(name='红楼梦', author='曹雪芹', stars='9.6')
+>>> Name.objects.create(name='活着', author='余华', stars='9.4')
+>>> Name.objects.all()[0].name
+>>> n = Name.objects.all()
+>>> n[0].name
+>>> n[1].name
+
+>>> Name.objects.values_list('name')
+<QuerySet [('红楼梦',), ('活着',)]>
+>>> Name.objects.values_list('name')[0]
+('红楼梦’,)
+filter支持更多查询条件
+filter(name=xxx, id=yyy)
+
+可以引入python的函数
+>>> Name.objects.values_list('name').count()
+2
