@@ -1,8 +1,9 @@
-{% extends "home/base_layout.html" %} {% block title %}Welcome{% endblock %} 
+{% extends "Douban/base_layout.html" %} {% block title %}Welcome{% endblock %} 
+{% load static %}
 {% block head %}
     {{ block.super }}
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/timeline.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/morris.css') }}">
+    <link rel="stylesheet" href="{% static 'css/timeline.css' %}">
+    <link rel="stylesheet" href="{% static 'css/morris.css' %}">
 {% endblock %} 
 {% block content %}
 <div class="row">
@@ -195,8 +196,9 @@
 </div>
 <!-- /.row -->{% endblock %}
 {% block js %}
-    {{ super() }}
-    <script src="{{ url_for('static', filename='js/raphael-min.js')}}"></script>
-    <script src="{{ url_for('static', filename='js/morris.min.js')}}"></script>
-    <script src="{{ url_for('static', filename='js/morris-data.js')}}"></script>
+    {{ block.super }}
+    <script src="{% static 'js/raphael-min.js' %}"></script>
+    <script src="{% static 'js/morris.min.js' %}"></script>
+    <script src="{% static 'js/morris-data.js' %}"></script>
+
 {% endblock %}
