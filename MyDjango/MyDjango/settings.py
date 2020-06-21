@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     #### 注册自己的APP
     'index',
+    'Douban',
 ]
 #### 中间件是request和response对象之间的钩子
 MIDDLEWARE = [
@@ -102,7 +103,7 @@ WSGI_APPLICATION = 'MyDjango.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'db2',
+        'NAME': 'db1',
         'USER': 'root',
         'PASSWORD': 'rootroot',
         'HOST': '127.0.0.1',
