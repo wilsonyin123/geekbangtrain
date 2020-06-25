@@ -14,11 +14,11 @@ def get_url_name(myurl):
 
     # Python 中使用 for in 形式的循环,Python使用缩进来做语句块分隔
     for tags in bs_info.find_all('div', attrs={'class': 'hd'}):
-        for atag in tags.find_all('a',):
+        for atag in tags.find_all('a'):
             # 获取所有链接
             print(atag.get('href'))
             # 获取电影名字
-            print(atag.find('span',).text)
+            print(atag.find('span').text)
 
 
 # 生成包含所有页面的元组
