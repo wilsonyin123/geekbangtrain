@@ -19,7 +19,7 @@ class DoubanmoviePipeline:
         output = f'|{title}|\t|{link}|\t|{content}|\n\n'
         with open('./doubanmovie.txt', 'a+', encoding='utf-8') as article:
             article.write(output)
-            article.close()
+
         return item
 
 

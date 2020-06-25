@@ -36,7 +36,7 @@ class DoubanSpider(scrapy.Spider):
         for i in title_list:
             # 在items.py定义
             item = DoubanmovieItem()
-            title = i.find('a').find('span',).text
+            title = i.find('a').find('span').text
             link = i.find('a').get('href')
             item['title'] = title
             item['link'] = link
