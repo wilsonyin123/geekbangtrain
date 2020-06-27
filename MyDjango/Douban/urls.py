@@ -3,6 +3,5 @@ from . import views
 
 
 urlpatterns = [
-    path('douban', views.books_short),
-
+    path('index', views.books_short),
 ]
