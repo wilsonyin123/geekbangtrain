@@ -16,12 +16,16 @@ login_url = 'https://accounts.douban.com/j/mobile/login/basic'
 form_data = {
 'ck':'',
 'name':'15055495@qq.com',
-'password':'test123test456',
+'password':'',
 'remember':'false',
 'ticket':''
 }
 
-response = s.post(login_url, data = form_data, headers = headers)
+# post数据前获取cookie
+pre_login = 'https://accounts.douban.com/passport/login'
+pre_resp = s.get(pre_login, headers=headers)
+
+response = s.post(login_url, data=form_data, headers=headers, cookies=s.cookies)
 
 
 # 登陆后可以进行后续的请求
