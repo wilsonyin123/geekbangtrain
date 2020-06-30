@@ -4,8 +4,6 @@ def ex1():
     yield 2
     return 3
 
-
-
 def ex2():
     ex1_result = yield from ex1()
     print(f'ex1 : {ex1_result}')
