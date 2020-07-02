@@ -1,2 +1,2 @@
-2、jieba
-3、snownlp NLP
+1、jieba分词
+2、snownlp语义情感分析
