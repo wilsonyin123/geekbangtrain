@@ -1,2 +1,1 @@
-# geekbangtrain
-Python训练营
+XPathd代替bs4匹配网页
