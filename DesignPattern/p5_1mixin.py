@@ -10,8 +10,8 @@ class S1class(Fclass):
 
 class MixinClass(object):
     def text(self):
-        # return super().text()
-        print('in MixinClass')
+        return super().text()
+        # print('in MixinClass')
 
 
 class S2class(S1class, MixinClass):

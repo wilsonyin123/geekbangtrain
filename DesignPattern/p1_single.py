@@ -11,6 +11,11 @@ def singleton(cls):
 class MyClass:
     pass
 
+m1 = MyClass()
+m2 = MyClass()
+print(id(m1))
+print(id(m2))
+
 
 ##################
 # __new__ 与 __init__ 的关系

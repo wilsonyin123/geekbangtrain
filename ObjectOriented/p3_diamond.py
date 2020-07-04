@@ -1,4 +1,3 @@
-
 # 钻石继承
 class BaseClass(object):
     num_base_calls = 0
@@ -23,7 +22,6 @@ class Subclass(LeftSubclass,RightSubclass):
 
 a = Subclass()
 a.call_me()
-
 
 print(Subclass.mro())
 # 广度优先， 另外Python3 中不加(object)也是新式类，但是为了代码不会误运行在python2下产生意外结果，仍然建议增加

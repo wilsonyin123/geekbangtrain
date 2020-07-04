@@ -8,9 +8,9 @@ class SubClass(Father):
     def foo(self):
         return 'foo() called'
 
-# a = SubClass()
-# a.foo()
-# a.bar()  # NotImplementedError
+a = SubClass()
+a.foo()
+a.bar()  # NotImplementedError
 
 
 

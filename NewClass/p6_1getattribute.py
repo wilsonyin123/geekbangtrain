@@ -31,7 +31,6 @@ class Human2(object):
     def __init__(self):
         self.age = 18
     def __getattribute__(self,item):
-
         print(f' __getattribute__ called item:{item}')
 
 h1 = Human2()

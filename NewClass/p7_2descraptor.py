@@ -50,6 +50,15 @@ del h.gender
 # 使用setter 并不能真正意义上实现无法写入，gender被改名为 _Article__gender
 
 
+# property本质并不是函数，而是特殊类（实现了数据描述符的类）
+# 如果一个对象同时定义了__get__()和__set__()方法，则称为数据描述符，
+# 如果仅定义了__get__()方法，则称为非数据描述符
+
+# property的优点：
+# 1 代码更简洁，可读性、可维护性更强。
+# 2 更好的管理属性的访问。
+# 3 控制属性访问权限，提高数据安全性。
+
 
 # property 纯python实现
 
@@ -89,11 +98,3 @@ class Property(object):
     def deleter(self, fdel):
         return type(self)(self.fget, self.fset, fdel, self.__doc__)
 
-# property本质并不是函数，而是特殊类（实现了数据描述符的类）
-# 如果一个对象同时定义了__get__()和__set__()方法，则称为数据描述符，
-# 如果仅定义了__get__()方法，则称为非数据描述符
-
-# property的优点：
-# 1 代码更简洁，可读性、可维护性更强。
-# 2 更好的管理属性的访问。
-# 3 控制属性访问权限，提高数据安全性。

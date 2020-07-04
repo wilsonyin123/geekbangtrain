@@ -36,10 +36,11 @@ if __name__ == '__main__':
 def factory2(func):
     class klass: pass
     #setattr需要三个参数:对象、key、value
-    setattr(klass, func.__name__, func )
+    setattr(klass, func.__name__, func)
     return klass
 
-def say_foo(self): print('bar')
+def say_foo(self): 
+    print('bar')
 
 Foo = factory2(say_foo)
 foo = Foo()
