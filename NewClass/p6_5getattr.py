@@ -3,14 +3,11 @@ class Human2(object):
         self.age = 18
 
     def __getattr__(self, item): 
-        """
-        fly属性返回'superman',其他属性返回None
-        """
-        print('Human2:__getattr__')
+        # 对指定属性做处理:fly属性返回'superman',其他属性返回None
         self.item = item
         if self.item == 'fly':
             return 'superman'
-        # return 'OK'
+
 
 h1 = Human2()
 

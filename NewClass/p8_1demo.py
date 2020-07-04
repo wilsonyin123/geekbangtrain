@@ -1,22 +1,3 @@
-#1 实现缓存功能
-
-from werkzeug.utils import cached_property
-
-# werkzeug.utils.py p53
-
-class Foo(object):
-    @cached_property
-    def cal(self):
-        print('show me one time')
-        var1 = 'cached info'
-        return var1
-
-
-bar = Foo()
-bar.cal
-bar.cal
-
-######################
 #ORM(flask.ext.sqlalchemy)
 # 一个表记录一个节点的心跳更新
 # 通过一个属性来获取节点是否可用，而不用写复杂的查询语句

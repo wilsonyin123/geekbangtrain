@@ -13,4 +13,5 @@ h1 = Human2()
 
 print(h1.noattr)
 
+# 思考：有更简洁的写法吗？
 
