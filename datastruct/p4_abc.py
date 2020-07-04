@@ -29,10 +29,3 @@ p1 = Vector(1, 2, 3)
 p2 = Vector(4, 5, 6)
 
 p1-p2
-
-
-
-MutableSequence   append, reverse, extend, pop, remove，和 __iadd__
-Sequence  __contains__, __iter__, __reversed__, index, and count
-Reversible,    Collection
-Sized, Iterable, Container

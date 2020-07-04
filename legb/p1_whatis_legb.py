@@ -19,28 +19,28 @@ func()
 
 # L G
 x = 'Global'
-def func():
+def func2():
     x = 'Enclosing'
 
-    def func2():
+    def func3():
         x = 'Local'
 
         print (x)
-    func2()
+    func3()
 print(x)
-func()
+func2()
 
 
 
 # E
 x = 'Global'
-def func3():
+def func4():
     x = 'Enclosing'
-    def func2():
+    def func5():
         return x
-    return func2
+    return func5
 
-var = func3()
+var = func4()
 print( var() )
 
 
