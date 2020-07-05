@@ -1,10 +1,10 @@
 # version 5
 # 与line绑定的是line_conf()传入的a,b
-a=10
-b=20
+a=100
+b=200
 def line_conf(a, b):
     def line(x):
-        return a*x + b
+        return a*x+b
     return line
 
 line1 = line_conf(1, 1)

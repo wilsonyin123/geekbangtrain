@@ -4,5 +4,3 @@ def func(*args, **kargs):
 
 
 func(123, 'xz', name='xvalue')
-
-

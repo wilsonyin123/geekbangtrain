@@ -9,5 +9,3 @@ my_line = line_conf()
 print(my_line(5))
 
 
-
-
