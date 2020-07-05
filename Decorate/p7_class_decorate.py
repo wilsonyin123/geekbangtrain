@@ -26,7 +26,7 @@ MyClass(100)(myfunc)()
 
 
 # 另一个示例
-class Count:
+class Count(object):
     def __init__(self,func):
         self._func = func
         self.num_calls = 0

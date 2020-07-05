@@ -1,10 +1,8 @@
 # 装饰器带参数 
-from time import ctime,sleep
 
 def outer_arg(bar):
     def outer(func):
         def inner(*args,**kwargs):
-            print("%s called at %s"%(func.__name__,ctime()))
             ret = func(*args,**kwargs)
             print(bar)
             return ret
@@ -30,5 +28,6 @@ def foo(cls):
 
 def foo(cls):
     pass
-foo = synchronized(lock)(foo)
-foo = classmethod(foo)
+foo2 = synchronized(lock)(foo)
+foo3 = classmethod(foo2)
+foo = foo3

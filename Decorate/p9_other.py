@@ -31,57 +31,53 @@ def greet(greeting, name):
 greet('better','me')
 
 
-
-##############################
-# 用单例实例定义一个类
-
-def singleton(cls):
-    instances = {}
-    def getinstance():
-        if cls not in instances:
-            instances[cls] = cls()
-        return instances[cls]
-    return getinstance
-
-@singleton 
-class MyClass:
-    pass
-
-
 ############################################
 
-# 限定函数参数和返回类型
-# assert 2==1,'2不等于1' 断言语句为raise-if-not，
-# 用来测试表示式，其返回值为假，就会触发异常
+# Python3.7 引入 Data Class  PEP557
 
-# python2 
-def accepts(*types):
-    def check_accepts(f):
-        assert len(types) == f.func_code.co_argcount
-        def new_f(*args, **kwds):
-            for (a, t) in zip(args, types):
-                assert isinstance(a, t), \
-                       "arg %r does not match %s" % (a,t)
-            return f(*args, **kwds)
-        new_f.func_name = f.func_name
-        return new_f
-    return check_accepts 
+class MyClass:
+    def __init__(self, var_a, var_b):
+        self.var_a = var_a
+        self.var_b = var_b
 
-def returns(rtype):
-    def check_returns(f):
-        def new_f(*args, **kwds):
-            result = f(*args, **kwds)
-            assert isinstance(result, rtype), \
-                   "return value %r does not match %s" % (result,rtype)
-            return result
-        new_f.func_name = f.func_name
-        return new_f
-    return check_returns
+    def __eq__(self, other):
+        if self.__class__ is not other.__class__:
+            return False
+        return (self.var_a, self.var_b) == (other.var_a, other.var_b)
+        
+var3 = MyClass('x','y')
+var4 = MyClass('x','y')
 
-@accepts(int, (int,float))
-@returns((int,float))
-def func(arg1, arg2):
-    return arg1 * arg2
+var3 == var4
+
+from dataclasses import dataclass
+@dataclass
+class MyClass:
+    var_a: str
+    var_b: str
+
+var_1 = MyClass('x','y')
+var_2 = MyClass('x','y')
+
+# 不用在类中重新封装 __eq__
+
+var_1 == var_2
+# 存在的问题: var_a var_b不能作为类属性访问
+
+
+
+
+
+
+
+
+
+
+
+
+
+##########################
+
 
 
 # 如下的类装饰器实现了一个用于类实例属性的Private声明
@@ -170,46 +166,3 @@ if __name__ == '__main__':
 # [get: double]
 # [set: label Spam]
 # [get: display]
-
-############################################
-
-# Python3.7 引入 Data Class  PEP557
-
-class MyClass:
-    def __init__(self, var_a, var_b):
-        self.var_a = var_a
-        self.var_b = var_b
-
-    def __eq__(self, other):
-        if self.__class__ is not other.__class__:
-            return False
-        return (self.var_a, self.var_b) == (other.var_a, other.var_b)
-        
-var3 = MyClass('x','y')
-var4 = MyClass('x','y')
-
-var3 == var4
-
-from dataclasses import dataclass
-@dataclass
-class MyClass:
-    var_a: str
-    var_b: str
-
-var_1 = MyClass('x','y')
-var_2 = MyClass('x','y')
-
-# 不用在类中重新封装 __eq__
-
-var_1 == var_2
-# 存在的问题: var_a var_b不能作为类属性访问，数据类型str的声明是无效的
-
-
-############################################
-
-# 类装饰器还能支持
-#   @classmethod
-#  	@staticmethod
-#  	@property
-#   @*.setter
-#   @*.deleter

@@ -34,18 +34,18 @@ def route(rule, **options):
 ###############################
 
 # 包装
-def html_header(func):
+def html(func):
     def decorator():
         return f'<html>{func()}</html>'
     return decorator
 
-def body_header(func):
+def body(func):
     def decorator():
         return f'<body>{func()}</body>'
     return decorator
 
-@html_header
-@body_header
+@html
+@body
 def content():
     return 'hello world'
 
