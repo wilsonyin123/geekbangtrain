@@ -1,14 +1,12 @@
 def jumping_range(up_to):
-    """
-    Generator for the sequence of integers from 0 to up_to, exclusive.
-    Sending a value into the generator will shift the sequence by that amount.
-    """
     index = 0
     while index < up_to:
         jump = yield index
+        print(f'jump is {jump}')
         if jump is None:
             jump = 1   # next() 或者 send(None)
         index += jump 
+        print(f'index is {index}')
 
 if __name__ == '__main__':
     iterator = jumping_range(5)
