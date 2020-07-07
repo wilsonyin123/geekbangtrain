@@ -10,7 +10,7 @@ def run(name):
     start = time()
     sleep(random.choice([1, 2, 3, 4]))
     end = time()
-    print("%s子进程结束，进程ID：%d。耗时0.2%f" % (name, os.getpid(), end-start))
+    print("%s子进程结束，进程ID：%d。耗时%0.2f" % (name, os.getpid(), end-start))
 
 
 if __name__ == "__main__":
