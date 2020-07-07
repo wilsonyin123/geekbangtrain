@@ -24,7 +24,7 @@ next(repeat)
 ################
 # 有限迭代器
 for j in itertools.chain('ABC',[1, 2, 3]) :
-    j
+    print(j)
 
 # Python3.3 引入了 yield from 
 # PEP-380

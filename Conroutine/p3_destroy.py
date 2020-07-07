@@ -7,7 +7,7 @@ next(a_dict_iter)
 a_dict['c']=3
 
 next(a_dict_iter)
-# RuntimeError: 字典进行插入操作后，字典迭代器回立即失效
+# RuntimeError: 字典进行插入操作后，字典迭代器会立即失效
 
 # 尾插入操作不会损坏指向当前元素的List迭代器,列表会自动变长
 
