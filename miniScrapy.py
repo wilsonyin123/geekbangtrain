@@ -45,18 +45,18 @@ class ParserThread(threading.Thread):
     页面内容分析
     '''
     def __init__(self,thread_id,queue,file):
-        threading.Thread.__init__(self)
+        threading.Thread.__init__(self)      # 上面使用了super()
         self.thread_id = thread_id
         self.queue = queue
         self.file = file
 
     def run(self):
         print(f'启动线程：{self.thread_id}')
-        while not flag:
+        while not flag:                      # 这里有什么优化思路？
             try:
                 item = self.queue.get(False) # 参数为false时队列为空，抛出异常
-                if not item:
-                    pass
+                if not item:                 # 为什么要判断？
+                    continue
                 self.parse_data(item)
                 self.queue.task_done() # get之后检测是否会阻塞
             except Exception as e:
