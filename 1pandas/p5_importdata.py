@@ -7,7 +7,7 @@ excel1
 pd.read_excel(r'1.xlsx',sheet_name = 0)
 
 # 支持其他常见类型
-pd.read_csv(r'c:\file.csv',sep=' ', nrow=10, encoding='utf-8')
+pd.read_csv(r'c:\file.csv',sep=' ', nrows=10, encoding='utf-8')
 
 pd.read_table( r'file.txt' , sep = ' ')
 
