@@ -28,7 +28,8 @@ SECRET_KEY = 'p*d7^ue2xmk+1d(5!jk_1^lk2r1jf%!+@)k3!)hjo3(c%mygsu'
 DEBUG = True
 
 #### 域名访问权限
-ALLOWED_HOSTS = []
+# ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 #### App列表
 # Application definition
