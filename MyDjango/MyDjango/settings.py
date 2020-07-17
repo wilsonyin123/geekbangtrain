@@ -12,44 +12,35 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 
 import os
 
-#### 项目路径
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-#### 密钥
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'p*d7^ue2xmk+1d(5!jk_1^lk2r1jf%!+@)k3!)hjo3(c%mygsu'
+SECRET_KEY = 'ia9aqj*t9h9)1cs%_n$jem83ig2=_#a_rk5(lw1@*tweq_028%'
 
-#### 调试模式
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-#### 域名访问权限
 ALLOWED_HOSTS = []
 
-#### App列表
+
 # Application definition
 
 INSTALLED_APPS = [
-    ####  内置的后台管理系统
     'django.contrib.admin',
-    ####  内置的用户认证系统
     'django.contrib.auth',
-    #### 所有model元数据
     'django.contrib.contenttypes',
-    #### 会话，表示当前访问网站的用户身份
     'django.contrib.sessions',
-    #### 消息提示
     'django.contrib.messages',
-    #### 静态资源路径
     'django.contrib.staticfiles',
-    #### 注册自己的APP
-    'index'
+    'djcelery',
+    'djcron'
 ]
-#### 中间件是request和response对象之间的钩子
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -58,20 +49,15 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'index.middleware.Middle1'
 ]
 
 ROOT_URLCONF = 'MyDjango.urls'
 
 TEMPLATES = [
     {
-        #### 定义模板引擎
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        #### 设置模板路径
         'DIRS': [],
-        #### 是否在App里查找模板文件
         'APP_DIRS': True,
-        #### 用于RequestContext上下文的调用函数
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
@@ -88,38 +74,17 @@ WSGI_APPLICATION = 'MyDjango.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
-#### 数据库配置，默认是sqlite，Django2.2使用mysqlclient或pymysql模块连接MySQL
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-#     }
-# }
 
-# export PATH=$PATH:/usr/local/mysql/bin
-# OSError: mysql_config not found
-# pip install mysqlclient
-# pip install pymysql
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'db1',
-        'USER': 'root',
-        'PASSWORD': 'rootroot',
-        'HOST': '127.0.0.1',
-        'PORT': '3306',
-    }
-    # 生产环境有可能连接第二个数据库
-    # 'db2': {
-    #     'ENGINE': 'django.db.backends.mysql',
-    #     'NAME': 'mydatabase',
-    #     'USER': 'mydatabaseuser',
-    #     'PASSWORD': 'mypassword',
-    #     'HOST': '127.0.0.1',
-    #     'PORT': '3307',
-    # }
+'default': {
+'ENGINE': 'django.db.backends.mysql',
+'NAME': 'db1',
+'USER': 'root',
+'PASSWORD': 'rootroot',
+'HOST': '127.0.0.1',
+'PORT': '3306',
 }
-
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
@@ -158,3 +123,14 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
+
+from celery.schedules import crontab
+from celery.schedules import timedelta
+
+import djcelery
+djcelery.setup_loader()
+BROKER_URL = 'redis://:123456@127.0.0.1:6379/'  # 代理人
+CELERY_IMPORTS = ('djcron.tasks')  # app
+CELERY_TIMEZONE = 'Asia/Shanghai' # 时区
+CELERYBEAT_SCHEDULER = 'djcelery.schedulers.DatabaseScheduler' # 定时任务调度器
+
