@@ -3,3 +3,5 @@
 3、include函数
 4、HttpRequest
 5、HttpResponse
+6、查询管理器
+7、模板引擎如何渲染模版变量
