@@ -2,12 +2,16 @@ from django.shortcuts import render
 from django.shortcuts import redirect
 
 # Create your views here.
+from django.http import HttpRequest
 from django.http import HttpResponse
 
 ###  从models取数据传给template  ###
 from .models import Name
 
 def index(request):
+    # http://127.0.0.1:8000/?id=1&id=2&name=wilson
+    # print(request.GET)
+    # <QueryDict: {'id': ['1', '2'], 'name': ['wilson']}>
     return HttpResponse("Hello Django!")
 
 def myyear(request, year):
@@ -29,7 +33,7 @@ def test1(request):
     # 已经引入了HttpResponse
     # from django.http import HttpResponse
     response1 = HttpResponse()
-    response2 = HttpResponse("Text only, please.", content_type="text/plain")
+    response2 = HttpResponse("Any Text", content_type="text/plain")
 
     return response1
 
