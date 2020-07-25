@@ -35,7 +35,7 @@ def test1(request):
     response1 = HttpResponse()
     response2 = HttpResponse("Any Text", content_type="text/plain")
 
-    return response1
+    return response2
 
 def test2(request):
     # 使用HttpResponse的子类
