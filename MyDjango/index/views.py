@@ -43,9 +43,6 @@ def test2(request):
     response4 = HttpResponseNotFound('<h1>Page not found</h1>')
     return response4
 
-def login(request):
-    return render(request, 'form1.html', locals())
-
 
 from .form import LoginForm
 from django.contrib.auth import authenticate, login
