@@ -62,7 +62,6 @@ def login2(request):
                 return HttpResponse('登录成功')
             else:
                 return HttpResponse('登录失败')
-
     # GET
     if request.method == "GET":
         login_form = LoginForm()
