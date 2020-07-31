@@ -7,7 +7,7 @@ app = Flask(__name__)
 def index():
     # 获取ctx对象
     ctx = _request_ctx_stack.top 
-    # Request 上下文管理>
+    # Request 上下文管理
     print(ctx)  
     print(ctx.request.method)  # GET
     return 'index'

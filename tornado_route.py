@@ -1,4 +1,3 @@
-
 import tornado.ioloop
 import tornado.web                              
 
@@ -15,3 +14,7 @@ application = tornado.web.Application([
 if __name__ == "__main__":
     application.listen(8000)                    
     tornado.ioloop.IOLoop.instance().start()
+
+# gevent 代码好维护
+# twisted 稳定性最好
+# tornado 兼容性最好
