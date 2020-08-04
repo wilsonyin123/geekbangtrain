@@ -39,9 +39,9 @@ class Human2(object):
 
 
 h = Human2()
-h.gender = 'F'
-h.gender
-del h.gender
+h.gender2 = 'F'
+h.gender2
+del h.gender2
 # 另一种property写法
 # gender  = property(get_, set_, del_, 'other property')
 
